@@ -16,16 +16,21 @@ func main() {
 	scanner.Scan()
 	input := scanner.Text()
 
-	ps := url.Values{}
-	ps.Add("content", input)
+	// set input as data
+	data := url.Values{
+		"content": {input},
+	}
 
-	res, err := http.PostForm("http://localhost:8000/echo", ps)
+	//make POSt request
+	res, err := http.PostForm("http://localhost:8000/echo", data)
 	if err != nil {
 			log.Fatal(err)
 	}
 
-	defer res.Body.Close()
+	// Not sure this is necessary.
+	// defer res.Body.Close()
 
+	// Read the response and print
 	body, _ := io.ReadAll(res.Body)
 	fmt.Print(string(body))
 }
