@@ -18,7 +18,7 @@ type Data struct {
 func main() {
 	// takes inputs and sets it to data
 	var inputs [3]string
-	age := 2
+	var age int
 	fmt.Scan(&inputs[0], &inputs[1], &age, &inputs[2])
 
 	data := Data{
